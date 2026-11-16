@@ -1,0 +1,944 @@
+
+/* Lucky Movers Driver Page */
+
+:root {
+  --dp-navy: #102a43;
+  --dp-blue: #1769e0;
+  --dp-light: #f4f7fb;
+  --dp-border: #dce4ee;
+  --dp-text: #243b53;
+  --dp-muted: #627d98;
+  --dp-green: #16845b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: var(--dp-text);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.dp-auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 0.85fr);
+  background: white;
+}
+
+.dp-auth-visual {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+  color: white;
+  background: linear-gradient(145deg, #102a43, #1769e0);
+}
+
+.dp-brand,
+.dp-mobile-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.dp-brand-mark {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #ffffff20;
+}
+
+.dp-brand strong,
+.dp-brand small {
+  display: block;
+}
+
+.dp-brand small {
+  margin-top: 5px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.dp-visual-copy {
+  max-width: 520px;
+}
+
+.dp-kicker,
+.dp-label {
+  color: var(--dp-blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.dp-auth-visual .dp-kicker {
+  color: #c8ddff;
+}
+
+.dp-visual-copy h1 {
+  margin: 18px 0;
+  font-size: clamp(36px, 4vw, 58px);
+  line-height: 1.08;
+}
+
+.dp-visual-copy p {
+  color: #e1ebf8;
+  line-height: 1.8;
+}
+
+.dp-benefit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.dp-visual-footer {
+  color: #d6e5f8;
+  font-size: 13px;
+}
+
+.dp-auth-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 28px;
+  background: #fff;
+}
+
+.dp-mobile-brand {
+  display: none;
+}
+
+.dp-auth-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.dp-auth-card h2 {
+  margin: 12px 0 8px;
+  color: var(--dp-navy);
+  font-size: 30px;
+}
+
+.dp-auth-subtitle {
+  margin-bottom: 28px;
+  color: var(--dp-muted);
+  line-height: 1.6;
+}
+
+.dp-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dp-auth-form label {
+  margin-top: 7px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.dp-input-wrap {
+  min-height: 49px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 13px;
+  border: 1px solid var(--dp-border);
+  border-radius: 10px;
+  color: var(--dp-muted);
+  background: white;
+}
+
+.dp-input-wrap:focus-within {
+  border-color: var(--dp-blue);
+  box-shadow: 0 0 0 3px #1769e018;
+}
+
+.dp-input-wrap input,
+.dp-input-wrap select {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--dp-text);
+  padding: 12px 0;
+}
+
+.dp-eye-button {
+  border: 0;
+  background: transparent;
+  color: var(--dp-muted);
+}
+
+.dp-button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.dp-button-primary {
+  color: white;
+  background: var(--dp-blue);
+}
+
+.dp-button-primary:hover {
+  background: #1056bc;
+}
+
+.dp-auth-submit {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.dp-auth-submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.dp-auth-switch {
+  margin-top: 24px;
+  text-align: center;
+  color: var(--dp-muted);
+  font-size: 13px;
+}
+
+.dp-auth-switch button {
+  display: block;
+  margin: 10px auto;
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  color: var(--dp-blue);
+  font-weight: 800;
+}
+
+.dp-security-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  color: var(--dp-muted);
+  font-size: 12px;
+}
+
+.dp-auth-bottom {
+  margin-top: 25px;
+  font-size: 13px;
+}
+
+.dp-auth-bottom a,
+.dp-footer a {
+  color: var(--dp-blue);
+  text-decoration: none;
+}
+
+.dp-alert {
+  margin: 16px 0;
+  padding: 13px 15px;
+  border-radius: 9px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.dp-alert-success {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.dp-alert-error {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.dp-alert-info {
+  color: #1e40af;
+  background: #dbeafe;
+}
+
+.dp-dashboard {
+  min-height: 100vh;
+  background: var(--dp-light);
+}
+
+.dp-topbar {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px max(24px, calc((100% - 1180px) / 2));
+  background: white;
+  border-bottom: 1px solid var(--dp-border);
+}
+
+.dp-topbar .dp-brand {
+  color: var(--dp-navy);
+}
+
+.dp-topbar .dp-brand-mark {
+  color: var(--dp-blue);
+  background: #eaf2ff;
+}
+
+.dp-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dp-top-actions a,
+.dp-top-actions button {
+  border: 0;
+  background: transparent;
+  color: var(--dp-text);
+  text-decoration: none;
+}
+
+.dp-top-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.dp-top-actions .dp-logout {
+  color: #b42318;
+}
+
+.dp-mobile-menu {
+  display: none;
+}
+
+.dp-content {
+  max-width: 1180px;
+  margin: auto;
+  padding: 32px 24px;
+}
+
+.dp-welcome,
+.dp-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.dp-welcome h1 {
+  margin: 10px 0;
+  color: var(--dp-navy);
+  font-size: 32px;
+}
+
+.dp-welcome p,
+.dp-section-heading p {
+  color: var(--dp-muted);
+}
+
+.dp-status,
+.dp-chip,
+.dp-truck-tag,
+.dp-map-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #e8eef6;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.dp-status-available,
+.dp-chip-green {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.dp-status-busy {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+.dp-status-offline {
+  color: #475569;
+  background: #e2e8f0;
+}
+
+.dp-status > span,
+.dp-availability-dot {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.dp-profile-card,
+.dp-availability-panel,
+.dp-stats article,
+.dp-map-panel,
+.dp-work-section {
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid var(--dp-border);
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 4px 16px #102a4308;
+}
+
+.dp-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dp-profile-icon,
+.dp-stat-icon {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 14px;
+  color: var(--dp-blue);
+  background: #eaf2ff;
+}
+
+.dp-profile-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.dp-profile-main h2,
+.dp-availability-panel h2,
+.dp-section-heading h2 {
+  margin: 0 0 10px;
+  color: var(--dp-navy);
+}
+
+.dp-profile-main p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--dp-muted);
+  overflow-wrap: anywhere;
+}
+
+.dp-truck-tag {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.dp-gps-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.dp-gps-light {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #94a3b8;
+}
+
+.dp-gps-on {
+  background: #16a34a;
+}
+
+.dp-availability-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.dp-availability-panel p {
+  color: var(--dp-muted);
+}
+
+.dp-availability-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dp-availability-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  border: 1px solid var(--dp-border);
+  border-radius: 9px;
+  background: white;
+  color: var(--dp-text);
+}
+
+.dp-availability-button.dp-selected {
+  border-color: var(--dp-blue);
+  background: #eff6ff;
+  color: var(--dp-blue);
+}
+
+.dp-dot-available {
+  color: #16a34a;
+}
+
+.dp-dot-busy {
+  color: #d97706;
+}
+
+.dp-dot-offline {
+  color: #64748b;
+}
+
+.dp-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.dp-stats article {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 0;
+}
+
+.dp-stats article small,
+.dp-stats article strong {
+  display: block;
+}
+
+.dp-stats article small {
+  color: var(--dp-muted);
+}
+
+.dp-stats article strong {
+  margin-top: 8px;
+  color: var(--dp-navy);
+  font-size: 23px;
+}
+
+.dp-stat-green {
+  color: #16845b;
+  background: #dcfce7;
+}
+
+.dp-stat-blue {
+  color: #7c3aed;
+  background: #ede9fe;
+}
+
+.dp-stat-text {
+  font-size: 16px !important;
+}
+
+.dp-map {
+  height: 360px;
+  margin-top: 18px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.dp-map .leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.dp-map-badge {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.dp-map-note {
+  color: var(--dp-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.driver-map-icon {
+  background: transparent;
+  border: 0;
+}
+
+.driver-map-truck {
+  font-size: 30px;
+  text-align: center;
+}
+
+.dp-tabs {
+  display: flex;
+  gap: 22px;
+  margin: 22px 0;
+  border-bottom: 1px solid var(--dp-border);
+}
+
+.dp-tab {
+  padding: 13px 5px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--dp-muted);
+  font-weight: 700;
+}
+
+.dp-tab span {
+  margin-left: 6px;
+  padding: 3px 7px;
+  border-radius: 20px;
+  background: #e8eef6;
+}
+
+.dp-tab-active {
+  color: var(--dp-blue);
+  border-bottom-color: var(--dp-blue);
+}
+
+.dp-jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.dp-job-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--dp-border);
+  border-radius: 14px;
+  background: white;
+}
+
+.dp-job-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.dp-job-top h3 {
+  margin: 8px 0 20px;
+  color: var(--dp-navy);
+}
+
+.dp-route {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--dp-light);
+}
+
+.dp-route-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.dp-route-row small,
+.dp-job-info span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--dp-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+}
+
+.dp-route-row strong {
+  overflow-wrap: anywhere;
+}
+
+.dp-route-dot {
+  width: 10px;
+  height: 10px;
+  margin-top: 4px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #16a34a;
+}
+
+.dp-drop-dot {
+  background: #dc2626;
+}
+
+.dp-job-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.dp-job-info strong {
+  overflow-wrap: anywhere;
+}
+
+.dp-text-button {
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: var(--dp-blue);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.dp-customer-info {
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 9px;
+  background: var(--dp-light);
+  overflow-wrap: anywhere;
+}
+
+.dp-customer-info a {
+  color: var(--dp-blue);
+}
+
+.dp-quotation {
+  display: grid;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.dp-quotation label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.dp-quotation input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--dp-border);
+  border-radius: 9px;
+}
+
+.dp-full-button {
+  width: 100%;
+}
+
+.dp-button-light {
+  color: var(--dp-navy);
+  border: 1px solid var(--dp-border);
+  background: white;
+}
+
+.dp-button-whatsapp {
+  color: white;
+  background: #16845b;
+}
+
+.dp-job-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.dp-empty {
+  padding: 48px 20px;
+  text-align: center;
+  color: var(--dp-muted);
+}
+
+.dp-empty h3 {
+  color: var(--dp-navy);
+}
+
+.dp-load-more {
+  display: block;
+  margin: 24px auto 0;
+  padding: 12px 18px;
+  border: 1px solid var(--dp-border);
+  border-radius: 9px;
+  background: white;
+  color: var(--dp-blue);
+  font-weight: 700;
+}
+
+.dp-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 30px 0 10px;
+  color: var(--dp-muted);
+  font-size: 13px;
+}
+
+.dp-footer strong {
+  color: var(--dp-navy);
+}
+
+@media (max-width: 900px) {
+  .dp-auth-page {
+    grid-template-columns: 1fr;
+  }
+
+  .dp-auth-visual {
+    display: none;
+  }
+
+  .dp-auth-side {
+    min-height: 100vh;
+    padding: 28px 22px;
+    background: var(--dp-light);
+  }
+
+  .dp-mobile-brand {
+    display: inline-flex;
+    margin-bottom: 32px;
+    color: var(--dp-navy);
+    font-weight: 800;
+  }
+
+  .dp-auth-card {
+    padding: 26px;
+    border: 1px solid var(--dp-border);
+    border-radius: 16px;
+    background: white;
+  }
+
+  .dp-profile-card {
+    flex-wrap: wrap;
+  }
+
+  .dp-gps-status {
+    width: 100%;
+  }
+
+  .dp-availability-panel {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 650px) {
+  .dp-topbar {
+    position: relative;
+    padding: 14px 18px;
+  }
+
+  .dp-mobile-menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--dp-border);
+    border-radius: 9px;
+    background: white;
+  }
+
+  .dp-top-actions {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    top: 70px;
+    left: 12px;
+    right: 12px;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 18px;
+    padding: 18px;
+    border: 1px solid var(--dp-border);
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 12px 30px #102a4315;
+  }
+
+  .dp-top-actions.dp-menu-open {
+    display: flex;
+  }
+
+  .dp-content {
+    padding: 22px 14px;
+  }
+
+  .dp-welcome {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dp-welcome h1 {
+    font-size: 27px;
+  }
+
+  .dp-profile-card,
+  .dp-availability-panel,
+  .dp-stats article,
+  .dp-map-panel,
+  .dp-work-section {
+    padding: 17px;
+  }
+
+  .dp-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .dp-jobs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dp-job-info {
+    grid-template-columns: 1fr;
+  }
+
+  .dp-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dp-map {
+    height: 280px;
+  }
+
+  .dp-auth-side {
+    padding: 20px 14px;
+  }
+
+  .dp-auth-card {
+    padding: 21px 17px;
+  }
+
+  .dp-auth-card h2 {
+    font-size: 25px;
+  }
+
+  .dp-footer {
+    flex-direction: column;
+  }
+}

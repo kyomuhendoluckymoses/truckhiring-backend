@@ -1,0 +1,191 @@
+/* ==========================================
+   LUCKY MOVERS - GLOBAL STYLES
+   ========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #F8FAFC;
+  color: #071D3A;
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+.hero-section {
+  margin: 20px 40px 0 40px;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.hero-content {
+  padding: 0 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-heading {
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: white;
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+
+.hero-text {
+  font-size: 20px;
+  color: #CBD5E1;
+  max-width: 600px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   SERVICE CARDS GRID (3 columns on desktop)
+   ========================================== */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* ==========================================
+   BOOKING GRID (2 columns on desktop)
+   ========================================== */
+.booking-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE (max-width: 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  .hero-section {
+    margin: 15px 15px 0 15px;
+    min-height: 500px;
+  }
+  
+  .hero-content {
+    padding: 20px 20px;
+  }
+  
+  .hero-heading {
+    font-size: 36px;
+    max-width: 100%;
+  }
+  
+  .hero-text {
+    font-size: 15px;
+    max-width: 100%;
+  }
+  
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .booking-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  /* Navbar wraps on mobile */
+  header {
+    flex-wrap: wrap !important;
+    padding: 10px 15px !important;
+  }
+  
+  /* Text sizes */
+  h1 { font-size: 24px !important; }
+  h2 { font-size: 20px !important; }
+  h3 { font-size: 18px !important; }
+  
+  /* Tables scroll horizontally */
+  table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap;
+  }
+  
+  /* Sidebar full width on mobile */
+  aside {
+    width: 100% !important;
+    min-width: 100% !important;
+    position: relative !important;
+  }
+  
+  /* Main content padding */
+  main {
+    padding: 15px !important;
+  }
+  
+  /* Service cards container margin */
+  .service-grid {
+    margin: -40px auto 0 !important;
+  }
+  
+  /* Footer stack */
+  footer {
+    padding: 40px 20px 20px !important;
+  }
+  
+  footer > div {
+    grid-template-columns: 1fr !important;
+    gap: 25px !important;
+  }
+}
+
+/* ==========================================
+   TABLET (769px - 1024px)
+   ========================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-heading {
+    font-size: 48px;
+  }
+  
+  .hero-content {
+    padding: 0 40px;
+  }
+  
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ==========================================
+   SCROLLBAR STYLING
+   ========================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
