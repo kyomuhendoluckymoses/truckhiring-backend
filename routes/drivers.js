@@ -3,9 +3,9 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
-const Driver = require('../models/Driver');
 
-// IMPORT THE DRIVER MIDDLEWARE
+const Driver = require('../models/Driver');
+const db = require('../db');
 const requireDriver = require('../middleware/requireDriver');
 
 const TOKEN_SECRET = process.env.DRIVER_TOKEN_SECRET;
@@ -19,19 +19,29 @@ router.get('/', async (req, res) => {
   try {
     const drivers = await Driver.all();
 
+    // TEMPORARY DATABASE DIAGNOSTIC
+    const [diagnostic] = await db.query(
+      'SELECT DATABASE() AS databaseName, COUNT(*) AS driverCount FROM drivers'
+    );
+
+    console.log('RENDER DATABASE CHECK:', diagnostic[0]);
+    console.log('DRIVER MODEL RETURNED:', drivers.length);
+
     // Never send driver passwords to the frontend
     const safeDrivers = drivers.map(({ password, ...driver }) => driver);
 
     return res.json({ drivers: safeDrivers });
+
   } catch (err) {
     console.error('GET DRIVERS ERROR:', err);
+
     return res.status(500).json({
       message: 'Could not load drivers.'
     });
   }
 });
 
-// LOGIN
+// DRIVER LOGIN
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -50,7 +60,6 @@ router.post('/login', async (req, res) => {
       });
     }
 
-    // BLOCK SUSPENDED DRIVERS
     if (driver.availability === 'suspended') {
       return res.status(403).json({
         message: 'Your account has been suspended. Please contact Lucky Movers Admin.'
@@ -65,7 +74,6 @@ router.post('/login', async (req, res) => {
       });
     }
 
-    // GENERATE TOKEN
     const payload = {
       role: 'driver',
       id: driver.id,
@@ -105,7 +113,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
 // UPDATE DRIVER GPS LOCATION
 router.patch('/location', requireDriver, async (req, res) => {
   try {
@@ -118,7 +125,9 @@ router.patch('/location', requireDriver, async (req, res) => {
       latitude < -90 || latitude > 90 ||
       longitude < -180 || longitude > 180
     ) {
-      return res.status(400).json({ message: 'Invalid GPS coordinates.' });
+      return res.status(400).json({
+        message: 'Invalid GPS coordinates.'
+      });
     }
 
     const driver = await Driver.updateLocation(
@@ -128,13 +137,21 @@ router.patch('/location', requireDriver, async (req, res) => {
     );
 
     if (!driver) {
-      return res.status(404).json({ message: 'Driver not found.' });
+      return res.status(404).json({
+        message: 'Driver not found.'
+      });
     }
 
-    return res.json({ message: 'Driver location updated.' });
+    return res.json({
+      message: 'Driver location updated.'
+    });
+
   } catch (err) {
     console.error('UPDATE DRIVER LOCATION ERROR:', err);
-    return res.status(500).json({ message: 'Could not update driver location.' });
+
+    return res.status(500).json({
+      message: 'Could not update driver location.'
+    });
   }
 });
 
@@ -149,7 +166,6 @@ router.get('/me', requireDriver, async (req, res) => {
       });
     }
 
-    // Do not expose password
     const { password, ...safeDriver } = driver;
 
     return res.json({
@@ -239,8 +255,6 @@ router.post('/register', async (req, res) => {
       });
     }
 
-    // Driver.create() hashes the password internally.
-    // Pass the original password only once.
     const driver = await Driver.create({
       name,
       email,
@@ -250,7 +264,6 @@ router.post('/register', async (req, res) => {
       truckPlate: truckPlate || ''
     });
 
-    // Do not expose password
     const { password: savedPassword, ...safeDriver } = driver;
 
     return res.status(201).json({
@@ -268,4 +281,3 @@ router.post('/register', async (req, res) => {
 });
 
 module.exports = router;
-
