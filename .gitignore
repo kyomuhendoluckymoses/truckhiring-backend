@@ -1,10 +1,105 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Environment (NEVER commit)
 .env
-node_modules/
-.env*
-node_modules/
+.env.*
+!.env.example
+frontend/.env
+frontend/.env.*
+
+# Build output
+frontend/dist/
+dist/
+build/
+
+# IDE / OS
 .idea/
-android/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+server-crash.log
+
+# Database files (never commit)
 *.db
-*.db.*
+*.db.backup*
+*.db.bak
+*.sqlite
+*.sqlite3
+lucky_movers*
+
+# Backups and snapshots
+*.backup
+*.backup-*
+*.backup.*
 *.bak
-*.backup*
+*.before-*
+*.safe-backup
+*.step3-backup
+*.layout-backup2
+*.before-cleanup
+src_backup/
+deployment-safety-backup/
+*.zip
+
+# One-off dev/fix/test scripts
+*.mjs
+*.cjs
+fix_*.js
+fix_*.cjs
+test-*.js
+check_*.js
+add_*.js
+patch_*.js
+update_*.js
+remove_*.mjs
+remove_*.js
+restore_*.js
+force_*.js
+connect_*.mjs
+setup_chat.js
+show-app.js
+show_error.mjs
+smart_register.mjs
+upgrade_dashboard*.js
+simulate.js
+count-records.js
+list-tables.js
+migrate-to-turso.js
+
+# Other backends (not deploying now)
+cloudflare-backend/
+
+# Vercel local
+.vercel/
+
+# Android (not deploying now)
+android/
+# ---- Pass 2: catch the stragglers ----
+*_before_*
+*_backup_*
+*-backup*
+*.broadcast-backup
+migration-schema.txt
+fix.js
+
+# Accidental PowerShell files
+cd
+type
+powershell
+findstr
+180
+(
+{
+driver)
+r.bookingId
+setActiveChat(null)}
+localStorage.getItem(adminKey)
+# ---- Pass 3 ----
+*_backup*
+*.before_*
+db.js.before_*
