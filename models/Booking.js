@@ -131,7 +131,7 @@ const Booking = {
     const values = fields.map((field) => data[field]);
 
     const setClause = fields
-      .map((field) => `"${field}" = ?`)
+      .map((field) => "`" + field + "` = ?")
       .join(', ');
 
     await pool.query(
@@ -173,3 +173,4 @@ const Booking = {
 };
 
 module.exports = Booking;
+
