@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const requireDriver = require('../middleware/requireDriver');
@@ -287,9 +286,19 @@ router.get('/mine', requireCustomer, async (req, res) => {
   }
 });
 
-// LIST ALL BOOKINGS
-// TODO: Add administrator/driver authorization and filtering.
-router.get('/', async (req, res) => {
+// LIST ALL BOOKINGS - ADMIN ONLY
+router.get('/', (req, res, next) => {
+  const adminKey = req.headers.authorization?.replace('Bearer ', '');
+  const expectedKey = process.env.ADMIN_KEY;
+
+  if (!expectedKey || adminKey !== expectedKey) {
+    return res.status(401).json({
+      message: 'Unauthorized. Admin access required.'
+    });
+  }
+
+  next();
+}, async (req, res) => {
   try {
     const bookings = await Booking.all();
 
