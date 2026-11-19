@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const db = require('./db'); // Import database
 
 const app = express();
 
@@ -28,8 +29,20 @@ module.exports = app;
 
 if (require.main === module) {
   const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-    console.log(`Server on port ${PORT}`);
-  });
+  
+  // Test database connection on startup
+  db.init()
+    .then(() => {
+      console.log('✅ DATABASE CONNECTED SUCCESSFULLY ON STARTUP');
+      app.listen(PORT, () => {
+        console.log(`Server on port ${PORT}`);
+      });
+    })
+    .catch((err) => {
+      console.error('❌ DATABASE CONNECTION FAILED ON STARTUP:', err.message);
+      // Still start the server so Render doesn't crash, but we will see the error
+      app.listen(PORT, () => {
+        console.log(`Server on port ${PORT} (WITH DB ERROR)`);
+      });
+    });
 }
-
