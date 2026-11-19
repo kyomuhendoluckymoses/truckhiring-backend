@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
@@ -18,14 +17,6 @@ if (!TOKEN_SECRET) {
 router.get('/', async (req, res) => {
   try {
     const drivers = await Driver.all();
-
-    // TEMPORARY DATABASE DIAGNOSTIC
-    const [diagnostic] = await db.query(
-      'SELECT DATABASE() AS databaseName, COUNT(*) AS driverCount FROM drivers'
-    );
-
-    console.log('RENDER DATABASE CHECK:', diagnostic[0]);
-    console.log('DRIVER MODEL RETURNED:', drivers.length);
 
     // Never send driver passwords to the frontend
     const safeDrivers = drivers.map(({ password, ...driver }) => driver);
