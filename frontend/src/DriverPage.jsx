@@ -28,7 +28,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png'
 });
 
-const API = 'http://localhost:3000/api';
+const API = 'https://truckhiring-backend-ydz8.vercel.app/api';
 
 function ChangeView({ center }) {
   const map = useMap();
@@ -970,7 +970,7 @@ export default function DriverPage() {
       )}
 
       {/* MAIN CONTENT */}
-      <main style={{
+      <main className="driver-main" style={{
         flex: 1,
         width: '100%',
         padding: '20px',
@@ -1804,6 +1804,7 @@ export default function DriverPage() {
     </div>
   );
 }
+
 
 
 

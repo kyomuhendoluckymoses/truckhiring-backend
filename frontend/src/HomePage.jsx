@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import LuckyMoversLogo from './LuckyMoversLogo';
+import './HomePage.mobile.css';
+import './HomePage.mobile.css';
 
 export default function HomePage({ onBook }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -20,7 +22,7 @@ export default function HomePage({ onBook }) {
     <div style={{ backgroundColor: '#F8FAFC', minHeight: '100vh', fontFamily: 'Inter, sans-serif', display: 'flex', flexDirection: 'column' }}>
       
       {/* HERO SECTION */}
-      <div style={{ 
+      <div className="lm-home-hero" style={{ 
         position: 'relative', 
         minHeight: '600px',
         display: 'flex',
@@ -45,7 +47,7 @@ export default function HomePage({ onBook }) {
 
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(10, 25, 47, 0.75)', zIndex: 1 }}></div>
         
-        <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 60px', width: '100%', zIndex: 2 }}>
+        <div className="lm-home-hero-content" style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 60px', width: '100%', zIndex: 2 }}>
           
           <div style={{ marginBottom: '30px' }}>
             <LuckyMoversLogo />
@@ -87,8 +89,8 @@ export default function HomePage({ onBook }) {
       </div>
 
       {/* 3 SERVICE CARDS - FORCED 3 COLUMNS ON DESKTOP */}
-      <div style={{ maxWidth: '1200px', margin: '-60px auto 0', padding: '0 40px', position: 'relative', zIndex: 2 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px' }}>
+      <div className="lm-home-services" style={{ maxWidth: '1200px', margin: '-60px auto 0', padding: '0 40px', position: 'relative', zIndex: 2 }}>
+        <div className="lm-home-service-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px' }}>
           
           <div onClick={onBook} style={{ cursor: 'pointer', backgroundColor: 'white', padding: '40px 30px', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.08)', textAlign: 'center', transition: 'transform 0.2s' }}>
             <div style={{ width: '80px', height: '80px', backgroundColor: '#FFF7ED', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: '36px' }}>🚚</div>
@@ -112,8 +114,8 @@ export default function HomePage({ onBook }) {
       </div>
 
       {/* FOOTER */}
-      <footer style={{ backgroundColor: '#071D3A', color: 'white', padding: '60px 40px 20px', marginTop: '80px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px', marginBottom: '40px' }}>
+      <footer className="lm-home-footer" style={{ backgroundColor: '#071D3A', color: 'white', padding: '60px 40px 20px', marginTop: '80px' }}>
+        <div className="lm-home-footer-grid" style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px', marginBottom: '40px' }}>
           <div>
             <h3 style={{ margin: '0 0 20px 0', fontSize: '20px' }}>Lucky Movers</h3>
             <p style={{ color: '#94A3B8', fontSize: '14px', lineHeight: '1.6' }}>
@@ -155,3 +157,5 @@ export default function HomePage({ onBook }) {
     </div>
   );
 }
+
+

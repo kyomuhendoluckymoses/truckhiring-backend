@@ -942,3 +942,85 @@ button {
     flex-direction: column;
   }
 }
+
+/* LUCKY MOVERS DRIVER MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .driver-main {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 12px !important;
+    overflow-x: hidden;
+    box-sizing: border-box !important;
+  }
+
+  .driver-main > header {
+    padding: 15px !important;
+    gap: 12px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .driver-main > header h1 {
+    font-size: 20px !important;
+    overflow-wrap: anywhere;
+  }
+
+  .driver-main > header > div {
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .driver-main [style*="minmax(180px"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .driver-main [style*="minmax(300px"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px !important;
+  }
+
+  .driver-main h2,
+  .driver-main h3,
+  .driver-main h4,
+  .driver-main p {
+    overflow-wrap: anywhere;
+  }
+
+  .driver-main button {
+    max-width: 100%;
+    min-height: 42px;
+  }
+
+  .driver-main input,
+  .driver-main select,
+  .driver-main textarea {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .driver-main table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .driver-main {
+    padding: 9px !important;
+  }
+
+  .driver-main > header {
+    padding: 12px !important;
+  }
+
+  .driver-main [style*="padding: 20px"] {
+    padding: 14px !important;
+  }
+
+  .driver-main [style*="gap: 10px"] {
+    flex-wrap: wrap;
+  }
+}

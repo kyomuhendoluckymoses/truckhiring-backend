@@ -1,3 +1,4 @@
+import './CustomerApp.mobile.css';
 
 import React, { useState, useEffect, useRef } from 'react';
 import {
@@ -23,7 +24,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png'
 });
 
-const API = "http://localhost:3000/api";
+const API = "https://truckhiring-backend-ydz8.vercel.app/api";
 
 function ChangeMapView({ center }) {
   const map = useMap();
@@ -39,6 +40,7 @@ function ChangeMapView({ center }) {
 
 export default function CustomerApp() {
   const [activeTab, setActiveTab] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(
     !!localStorage.getItem('customerToken')
   );
@@ -538,7 +540,7 @@ export default function CustomerApp() {
       )}
 
       {/* NAVBAR */}
-      <header
+      <header className="customer-header"
         style={{
           backgroundColor: '#2D1B69',
           color: 'white',
@@ -550,12 +552,16 @@ export default function CustomerApp() {
       >
         <h2
           style={{ margin: 0, cursor: 'pointer' }}
-          onClick={() => setActiveTab('home')}
+          onClick={() => { setActiveTab('home'); setMobileMenuOpen(false); }}
         >
           Lucky Movers
         </h2>
 
-        <nav
+        <button className="customer-menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle navigation menu">
+          {mobileMenuOpen ? '✕' : '☰'}
+        </button>
+
+        <nav className={"customer-nav " + (mobileMenuOpen ? "is-open" : "")}
           style={{
             display: 'flex',
             gap: '30px',
@@ -565,7 +571,7 @@ export default function CustomerApp() {
         >
 
           <button
-            onClick={() => setActiveTab('home')}
+            onClick={() => { setActiveTab('home'); setMobileMenuOpen(false); }}
             style={{
               background: 'none',
               border: 'none',
@@ -584,6 +590,7 @@ export default function CustomerApp() {
                 window.location.href = '/login';
               } else {
                 setActiveTab('book');
+                setMobileMenuOpen(false);
               }
             }}
             style={{
@@ -598,7 +605,7 @@ export default function CustomerApp() {
           </button>
 
           <button
-            onClick={() => setActiveTab('history')}
+            onClick={() => { setActiveTab('history'); setMobileMenuOpen(false); }}
             style={{
               background: 'none',
               border: 'none',
@@ -664,6 +671,7 @@ export default function CustomerApp() {
                 window.location.href = '/login';
               } else {
                 setActiveTab('book');
+                setMobileMenuOpen(false);
               }
             }}
           />
@@ -1150,6 +1158,10 @@ export default function CustomerApp() {
     </div>
   );
 }
+
+
+
+
 
 
 
